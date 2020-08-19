@@ -86,16 +86,6 @@ index 1c0b587..06265e1 100644
  static Key keys[] = {
  	/* modifier                     key        function        argument */
  	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-@@ -84,6 +101,9 @@ static Key keys[] = {
- 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
- 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
- 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-+	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
-+	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
-+	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
- 	TAGKEYS(                        XK_1,                      0)
- 	TAGKEYS(                        XK_2,                      1)
- 	TAGKEYS(                        XK_3,                      2)
 @@ -106,7 +126,7 @@ static Button buttons[] = {
  	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
  	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
