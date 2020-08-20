@@ -98,6 +98,7 @@ static const char *termcmd[]  = { "st", "-e", "tmux" };
 static const char *termcmdvanilla[]  = { "st", NULL };
 
 #include "selfrestart.c"
+#include "movestack.c"
 
 
 static Key keys[] = {
@@ -106,10 +107,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmdvanilla } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_e,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_e,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_j,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY,                       XK_n,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_n,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_f,      zoom,           {0} },
