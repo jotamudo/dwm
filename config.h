@@ -47,14 +47,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance       title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,          NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,          NULL,           1 << 8,    0,          0,          -1,        -1 },
-    { NULL,		 "spterm",		NULL,	        SPTAG(0),  1,		   -1,          0,        -1 },
-    { NULL,		 "spfm",		NULL,	        SPTAG(1),  1,		   -1,          0,        -1 },
-    { NULL,		 "keepassxc",	NULL,	        SPTAG(2),  0,		   -1,          0,        -1 },
-	{ "st",      NULL,          NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,          "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class     instance       title           tags mask  isfloating  isterminal  noswallow  monitor  iscentered */
+	{ "Gimp",    NULL,          NULL,           0,         1,          0,           0,        -1,       0 },
+	{ "Firefox", NULL,          NULL,           1 << 8,    0,          0,          -1,        -1,       0 },
+    { "st",	     "spterm",	    "~",	        SPTAG(0),  1,		  -1,           0,        -1,       1 },
+    { "st",	     "spfm",	    "ranger:~",	    SPTAG(1),  1,		  -1,           0,        -1,       1 },
+    { NULL,		 "keepassxc",	NULL,	        SPTAG(2),  0,		  -1,           0,        -1,       0 },
+	{ "st",      NULL,          NULL,           0,         0,          1,           0,        -1,       0 },
+	{ NULL,      NULL,          "Event Tester", 0,         0,          0,           1,        -1,       0 }, /* xev */
 };
 
 /* layout(s) */
@@ -96,6 +96,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *roficmd[] = { "rofi", "-show", "run", "-c", "~/.config/rofi/config.rasi", "-f", "FiraCode Nerd Font Mono 14" };
 static const char *termcmd[]  = { "st", "-e", "tmux" };
 static const char *termcmdvanilla[]  = { "st", NULL };
+static const char *browser[] = {"chromium", NULL};
 
 #include "selfrestart.c"
 #include "movestack.c"
@@ -106,6 +107,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmdvanilla } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = browser } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_e,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_e,      rotatestack,    {.i = -1 } },
@@ -127,10 +129,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[6]} },
-	{ MODKEY,                       XK_p,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[7]} },
 	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[8]} },
 	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[9]} },
-	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[10]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[10]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -155,7 +157,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_r,      self_restart,   {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace,      quit,   {0} },
 };
 
 /* button definitions */
