@@ -50,8 +50,8 @@ static const Rule rules[] = {
 	/* class     instance       title           tags mask  isfloating  isterminal  noswallow  monitor  iscentered */
 	{ "Gimp",    NULL,          NULL,           0,         1,          0,           0,        -1,       0 },
 	{ "Firefox", NULL,          NULL,           1 << 8,    0,          0,          -1,        -1,       0 },
-    { "st",	     "spterm",	    "~",	        SPTAG(0),  1,		  -1,           0,        -1,       1 },
-    { "st",	     "spfm",	    "ranger:~",	    SPTAG(1),  1,		  -1,           0,        -1,       1 },
+    { NULL,      "spterm",	    "~",	        SPTAG(0),  1,		  -1,           0,        -1,       1 },
+    { NULL,      "spfm",	    "ranger:~",	    SPTAG(1),  1,		  -1,           0,        -1,       1 },
     { NULL,		 "keepassxc",	NULL,	        SPTAG(2),  0,		  -1,           0,        -1,       0 },
 	{ "st",      NULL,          NULL,           0,         0,          1,           0,        -1,       0 },
 	{ NULL,      NULL,          "Event Tester", 0,         0,          0,           1,        -1,       0 }, /* xev */
@@ -97,9 +97,15 @@ static const char *roficmd[] = { "rofi", "-show", "run", "-c", "~/.config/rofi/c
 static const char *termcmd[]  = { "st", "-e", "tmux" };
 static const char *termcmdvanilla[]  = { "st", NULL };
 static const char *browser[] = {"chromium", NULL};
+static const char *muteaudio[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "toggle", NULL};
+static const char *audioraise[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL};
+static const char *audiolower[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
+static const char *raisebrightness[] = {"xbacklight", "-inc", "5", NULL };
+static const char *lowerbrightness[] = {"xbacklight", "-dec", "5", NULL };
 
 #include "selfrestart.c"
 #include "movestack.c"
+#include <X11/XF86keysym.h>
 
 
 static Key keys[] = {
@@ -158,6 +164,19 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_r,      self_restart,   {0} },
 	{ MODKEY|ShiftMask,             XK_BackSpace,      quit,   {0} },
+    { 0, XF86XK_AudioMute,		spawn,		{.v = muteaudio}},
+    { 0, XF86XK_AudioRaiseVolume,	spawn,		{.v = audioraise} },
+    { 0, XF86XK_AudioLowerVolume,	spawn,		{.v = audiolower} },
+    //{ 0, XF86XK_AudioPrev,		spawn,		{.v = {"mpc", "prev", NULL} } },
+    //{ 0, XF86XK_AudioNext,		spawn,		{.v = {"mpc", "next", NULL }} },
+    //{ 0, XF86XK_AudioPause,		spawn,		{.v = {"mpc", "pause", NULL }} },
+    //{ 0, XF86XK_AudioPlay,		spawn,		{.v = {"mpc", "play", NULL }} },
+    //{ 0, XF86XK_AudioStop,		spawn,		{.v = {"mpc", "stop", NULL }} },
+    //{ 0, XF86XK_AudioRewind,	spawn,		{.v = {"mpc", "seek", "-10", NULL }} },
+    //{ 0, XF86XK_AudioForward,	spawn,		{.v = {"mpc", "seek", "+10", NULL }} },
+    //{ 0, XF86XK_AudioMedia,		spawn,		{.v = {"st", "-e", "ncmpcpp", NULL }} },
+    { 0, XF86XK_MonBrightnessUp,	spawn,		{.v = raisebrightness} },
+    { 0, XF86XK_MonBrightnessDown,	spawn,		{.v = lowerbrightness} },
 };
 
 /* button definitions */
