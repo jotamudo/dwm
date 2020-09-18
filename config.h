@@ -102,6 +102,9 @@ static const char *audioraise[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@",
 static const char *audiolower[] = {"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
 static const char *raisebrightness[] = {"xbacklight", "-inc", "5", NULL };
 static const char *lowerbrightness[] = {"xbacklight", "-dec", "5", NULL };
+static const char *print[] = {"scrot", "-e", "\'mv $f ~/Pictures/Screenshots\'", NULL};
+static const char *printtoclipboard[] = {"scrot", "\'/tmp/%F_%T_$wx$h.png\'", "-e", "\'xclip -selection clipboard -target image/png -i $f\'", NULL };
+
 
 #include "selfrestart.c"
 #include "movestack.c"
@@ -178,6 +181,8 @@ static Key keys[] = {
     //{ 0, XF86XK_AudioMedia,		spawn,		{.v = {"st", "-e", "ncmpcpp", NULL }} },
     { 0, XF86XK_MonBrightnessUp,	spawn,		{.v = raisebrightness} },
     { 0, XF86XK_MonBrightnessDown,	spawn,		{.v = lowerbrightness} },
+    { 0, XK_Print,                  spawn,      {.v = print          } },
+    { ControlMask, XK_Print,                  spawn,      {.v = printtoclipboard  } },
 };
 
 /* button definitions */
