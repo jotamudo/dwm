@@ -50,8 +50,8 @@ static const Rule rules[] = {
 	/* class     instance       title           tags mask  isfloating  isterminal  noswallow  monitor  iscentered */
 	{ "Gimp",    NULL,          NULL,           0,         1,          0,           0,        -1,       0 },
 	{ "Firefox", NULL,          NULL,           1 << 8,    0,          0,          -1,        -1,       0 },
-    { NULL,      "spterm",	    "~",	        SPTAG(0),  1,		  -1,           0,        -1,       1 },
-    { NULL,      "spfm",	    "ranger:~",	    SPTAG(1),  1,		  -1,           0,        -1,       1 },
+    { NULL,      "spterm",	    NULL,	        SPTAG(0),  1,		  -1,           0,        -1,       1 },
+    { NULL,      "spfm",	    NULL,	        SPTAG(1),  1,		  -1,           0,        -1,       1 },
     { NULL,		 "keepassxc",	NULL,	        SPTAG(2),  0,		  -1,           0,        -1,       0 },
 	{ "st",      NULL,          NULL,           0,         0,          1,           0,        -1,       0 },
 	{ NULL,      NULL,          "Event Tester", 0,         0,          0,           1,        -1,       0 }, /* xev */

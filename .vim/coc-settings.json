@@ -1,0 +1,9 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/home/j_mudo/.espressif/python_env/idf4.3_py3.8_env/bin/python",
+    "clangd.compilationDatabasePath": "*",
+    "clangd.arguments": ["--compile-commands-dir=build/*"]
+}
+
