@@ -7,19 +7,22 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 20;       /* vertical padding of bar */
-static const int sidepad            = 10;       /* horizontal padding of bar */
-static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
+static const int vertpad            = 0;       /* vertical padding of bar */
+static const int sidepad            = 0;       /* horizontal padding of bar */
+static const int usealtbar          = 0;        /* 1 means use non-dwm status bar */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
-static const char *altbarcmd        = "$HOME/.config/polybar_back/launch.sh"; /* Alternate bar launch command */
-static const char *fonts[]          = { "monospace:size=10" };
+//static const char *altbarcmd        = "$HOME/.config/polybar_back/launch.sh"; [> Alternate bar launch command <]
+static const char *altbarcmd        = ""; /* Alternate bar launch command */
+static const char *fonts[]          = { "Iosevka Nerd Font Mono:style=Medium:size=12:antialias=true:autohint=true",
+										"Siji:style=Regular:size=12:antialias=true:autohint=true",
+										"fontawesome5pro:style=Regular:size=12:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#002b36";
+static const char col_gray2[]       = "#268bd2";
+static const char col_gray3[]       = "#657b83";
+static const char col_gray4[]       = "#002b36";
+static const char col_cyan[]        = "#268bd2";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
