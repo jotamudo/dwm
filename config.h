@@ -9,14 +9,14 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const int usealtbar          = 0;        /* 1 means use non-dwm status bar */
+static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
 static const char *alttrayname      = "tray";    /* Polybar tray instance name */
-//static const char *altbarcmd        = "$HOME/.config/polybar_back/launch.sh"; [> Alternate bar launch command <]
-static const char *altbarcmd        = ""; /* Alternate bar launch command */
-static const char *fonts[]          = { "Iosevka Nerd Font Mono:style=Medium:size=12:antialias=true:autohint=true",
+static const char *altbarcmd        = "$HOME/.config/polybar_back/launch.sh"; //[> Alternate bar launch command <]
+// static const char *altbarcmd        = ""; /* Alternate bar launch command */
+static const char *fonts[]          = { "fontawesome5pro:style=Regular:size=12:antialias=true:autohint=true",
 										"Siji:style=Regular:size=12:antialias=true:autohint=true",
-										"fontawesome5pro:style=Regular:size=12:antialias=true:autohint=true"};
+										"Iosevka Nerd Font Mono:style=Medium:size=12:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#002b36";
 static const char col_gray2[]       = "#268bd2";
